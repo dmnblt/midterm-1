@@ -1,9 +1,8 @@
 package router
 
 import (
-	"go-midterm/controllers"
-
 	"github.com/gin-gonic/gin"
+	"go-midterm/controllers"
 )
 
 func SetupRouter() *gin.Engine {

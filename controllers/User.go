@@ -2,27 +2,39 @@ package controllers
 
 import (
 	"database/sql"
+	"fmt"
 	"github.com/gin-gonic/gin"
-	"golang.org/x/crypto/bcrypt"
-	"net/http"
-	"time"
-
 	_ "github.com/go-sql-driver/mysql"
+	"golang.org/x/crypto/bcrypt"
+	"log"
+	"net/http"
 )
 
 type User struct {
-	ID        int64     `json:"id"`
-	Name      string    `json:"name"`
-	Email     string    `json:"email"`
-	Password  string    `json:"password"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt time.Time `json:"updated_at"`
+	ID        int64  `json:"id"`
+	Name      string `json:"name"`
+	Email     string `json:"email"`
+	Password  string `json:"-"`
+	CreatedAt string `json:"created_at"`
 }
 
 var db *sql.DB
 
-func UsersTable(database *sql.DB) {
-	db = database
+func dbConnect() *sql.DB {
+	var err error
+
+	db, err = sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/go_midterm")
+	if err != nil {
+		log.Fatalf("Error connecting to database: %v \n", err)
+	}
+
+	err = db.Ping()
+	if err != nil {
+		log.Fatalf("Error checking the database connection: %v \n", err)
+	}
+	fmt.Println("Connected to database!")
+
+	return db
 }
 
 func RegisterUser(c *gin.Context) {
@@ -33,7 +45,7 @@ func RegisterUser(c *gin.Context) {
 	}
 
 	var count int
-	err := db.QueryRow("SELECT COUNT(*) FROM users WHERE email=?", newUser.Email).Scan(&count)
+	err := dbConnect().QueryRow("SELECT COUNT(*) FROM users WHERE email=?", newUser.Email).Scan(&count)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Database error"})
 		return
@@ -49,7 +61,7 @@ func RegisterUser(c *gin.Context) {
 		return
 	}
 
-	_, err = db.Exec("INSERT INTO users (name, email, password) VALUES (?, ?, ?)", newUser.Name, newUser.Email, hashedPassword)
+	_, err = dbConnect().Exec("INSERT INTO users (name, email, password) VALUES (?, ?, ?)", newUser.Name, newUser.Email, hashedPassword)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error inserting user into database"})
 		return
@@ -59,6 +71,7 @@ func RegisterUser(c *gin.Context) {
 }
 
 func AuthorizeUser(c *gin.Context) {
+	defer db.Close()
 	var authUser struct {
 		Email    string `json:"email"`
 		Password string `json:"password"`
@@ -69,7 +82,7 @@ func AuthorizeUser(c *gin.Context) {
 	}
 
 	var dbPassword string
-	err := db.QueryRow("SELECT password FROM users WHERE email=?", authUser.Email).Scan(&dbPassword)
+	err := dbConnect().QueryRow("SELECT password FROM users WHERE email=?", authUser.Email).Scan(&dbPassword)
 	if err != nil {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid email or password"})
 		return
@@ -85,13 +98,14 @@ func AuthorizeUser(c *gin.Context) {
 }
 
 func SearchUsersByName(c *gin.Context) {
+	defer db.Close()
 	searchQuery := c.Query("name")
 	if searchQuery == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Missing search query parameter"})
 		return
 	}
 
-	rows, err := db.Query("SELECT id, name, email FROM users WHERE name LIKE ?", "%"+searchQuery+"%")
+	rows, err := dbConnect().Query("SELECT id, name, email, created_at FROM users WHERE name LIKE ?", "%"+searchQuery+"%")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error querying database"})
 		return
@@ -101,11 +115,13 @@ func SearchUsersByName(c *gin.Context) {
 	var users []User
 	for rows.Next() {
 		var user User
-		if err := rows.Scan(&user.ID, &user.Name, &user.Email); err != nil {
+		if err := rows.Scan(&user.ID, &user.Name, &user.Email, &user.CreatedAt); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Error scanning row"})
 			return
 		}
 		users = append(users, user)
+
+		fmt.Println(users)
 	}
 	if err := rows.Err(); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error iterating over rows"})
