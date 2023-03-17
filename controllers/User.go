@@ -84,13 +84,13 @@ func AuthorizeUser(c *gin.Context) {
 	var dbPassword string
 	err := dbConnect().QueryRow("SELECT password FROM users WHERE email=?", authUser.Email).Scan(&dbPassword)
 	if err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid email or password"})
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid email"})
 		return
 	}
 
 	err = bcrypt.CompareHashAndPassword([]byte(dbPassword), []byte(authUser.Password))
 	if err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid email or password"})
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid password"})
 		return
 	}
 
@@ -110,7 +110,6 @@ func SearchUsersByName(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error querying database"})
 		return
 	}
-	defer rows.Close()
 
 	var users []User
 	for rows.Next() {
