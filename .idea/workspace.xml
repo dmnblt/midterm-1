@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4bb4e0dd-0445-4be1-820b-ad1e5dee0332" name="Changes" comment="fix errors">
+    <list default="true" id="4bb4e0dd-0445-4be1-820b-ad1e5dee0332" name="Changes" comment="fix json password">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/User.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/User.go" afterDir="false" />
     </list>
@@ -48,7 +48,7 @@
     <property name="go.formatter.settings.were.checked" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../WebDriver" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../TestNg" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -96,7 +96,7 @@
       <workItem from="1678617507779" duration="1453000" />
       <workItem from="1678619047803" duration="1839000" />
       <workItem from="1678621077024" duration="1325000" />
-      <workItem from="1678622514178" duration="14725000" />
+      <workItem from="1678622514178" duration="19281000" />
     </task>
     <task id="LOCAL-00001" summary="added 5th report">
       <created>1678620891834</created>
@@ -126,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679070537800</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix json password">
+      <created>1679070760395</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679070760395</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,7 +156,8 @@
     <MESSAGE value="added mid exam project" />
     <MESSAGE value="fix methods" />
     <MESSAGE value="fix errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix errors" />
+    <MESSAGE value="fix json password" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix json password" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
