@@ -129,3 +129,34 @@ func SearchUsersByName(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"users": users})
 }
+
+func FindUsersBetweenDates(c *gin.Context) {
+	var users []User
+
+	start := c.Query("start_date")
+	end := c.Query("end_date")
+
+	query := "SELECT * FROM users WHERE created_at BETWEEN ? AND ?"
+	rows, err := db.Query(query, start, end)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Failed to get users",
+		})
+		return
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var user User
+		err := rows.Scan(&user.ID, &user.Name, &user.Email, &user.Password, &user.CreatedAt)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": "Failed to get users",
+			})
+			return
+		}
+		users = append(users, user)
+	}
+
+	c.JSON(http.StatusOK, users)
+}
