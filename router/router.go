@@ -14,6 +14,7 @@ func SetupRouter() *gin.Engine {
 		users.POST("/auth", controllers.AuthorizeUser)
 		users.GET("/by-name", controllers.SearchUsersByName)
 		users.GET("/between-dates", controllers.FindUsersBetweenDates)
+		users.PUT("/:id/email", controllers.UpdateUserEmail)
 	}
 
 	return router

@@ -160,3 +160,39 @@ func FindUsersBetweenDates(c *gin.Context) {
 
 	c.JSON(http.StatusOK, users)
 }
+
+func UpdateUserEmail(c *gin.Context) {
+	userID := c.Param("id")
+
+	var user User
+	query := "SELECT * FROM users WHERE id = ?"
+	err := db.QueryRow(query, userID).Scan(&user.ID, &user.Name, &user.Email, &user.Password, &user.CreatedAt)
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{
+			"error": "User not found",
+		})
+		return
+	}
+
+	var update struct {
+		Email string `json:"email" binding:"required"`
+	}
+	if err := c.ShouldBindJSON(&update); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": "Invalid request payload",
+		})
+		return
+	}
+
+	query = "UPDATE users SET email = ? WHERE id = ?"
+	_, err = db.Exec(query, update.Email, userID)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Failed to update user email",
+		})
+		return
+	}
+
+	user.Email = update.Email
+	c.JSON(http.StatusOK, user)
+}
