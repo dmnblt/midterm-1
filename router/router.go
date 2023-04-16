@@ -18,5 +18,10 @@ func SetupRouter() *gin.Engine {
 		users.POST("/change/pass", controllers.UpdateUserPassword)
 	}
 
+	news := router.Group("/news")
+	{
+		news.POST("/add", controllers.AddNews)
+	}
+
 	return router
 }

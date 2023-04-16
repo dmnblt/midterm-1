@@ -15,6 +15,7 @@ type User struct {
 	Name      string `json:"name"`
 	Email     string `json:"email"`
 	Password  string `json:"password"`
+	IsAdmin   bool   `json:"isAdmin"`
 	CreatedAt string `json:"created_at"`
 }
 
@@ -230,4 +231,22 @@ func UpdateUserPassword(c *gin.Context) {
 
 	user.Password = string(hashedPassword)
 	c.JSON(http.StatusOK, user)
+}
+
+func isAdmin() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		user, exists := c.Get("user")
+		if !exists {
+			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": "user not found in context"})
+			return
+		}
+
+		isAdmin := user != nil && user.(*User).IsAdmin
+		if !isAdmin {
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "not authorized"})
+			return
+		}
+
+		c.Next()
+	}
 }
