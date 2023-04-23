@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bb4e0dd-0445-4be1-820b-ad1e5dee0332" name="Changes" comment="fixed error while updating password">
-      <change afterPath="$PROJECT_DIR$/controllers/News.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/User.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/User.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/userRouter.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/News.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/News.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,11 +37,11 @@
     <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/go/pkg/mod/github.com/gin-gonic/gin@v1.5.0/routergroup.go" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/router/router.go" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/go.sum" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/main.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/controllers/User.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/go.sum" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/go/pkg/mod/github.com/gin-gonic/gin@v1.5.0/routergroup.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/main.go" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="2MuVYz28QpOaEYZgOuNeqKivHh4" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -59,7 +57,7 @@
     <property name="go.formatter.settings.were.checked" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -119,6 +117,8 @@
       <workItem from="1678621077024" duration="1325000" />
       <workItem from="1678622514178" duration="19281000" />
       <workItem from="1681125307300" duration="35000" />
+      <workItem from="1682064835523" duration="18000" />
+      <workItem from="1682256189262" duration="570000" />
     </task>
     <task id="LOCAL-00001" summary="added 5th report">
       <created>1678620891834</created>
@@ -199,5 +199,16 @@
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/controllers/News.go</url>
+          <line>9</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
