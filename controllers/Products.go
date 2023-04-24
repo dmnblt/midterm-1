@@ -24,10 +24,10 @@ func AddProduct(c *gin.Context) {
 		return
 	}
 
-	result, err := dbConnect().Exec("INSERT INTO products (user_id, product_name, rating, price, available) VALUES (?, ?, ?, ?)",
+	result, err := dbConnect().Exec("INSERT INTO products (user_id, product_name, rating, price, available) VALUES (?, ?, ?, ?, ?)",
 		product.UserId, product.ProductName, product.Rating, product.Price, product.Available)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"error while inserting": err.Error()})
 		return
 	}
 
@@ -48,7 +48,7 @@ func GetProductsByUserId(c *gin.Context) {
 		return
 	}
 
-	rows, err := dbConnect().Query("SELECT id, user_id, product_name, rating, available, created_at FROM products WHERE user_id = ? ORDER BY rating DESC", searchQuery)
+	rows, err := dbConnect().Query("SELECT id, user_id, product_name, rating, price, available, created_at FROM products WHERE user_id = ? ORDER BY rating DESC", searchQuery)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
