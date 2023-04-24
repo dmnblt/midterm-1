@@ -18,11 +18,12 @@ func SetupRouter() *gin.Engine {
 		users.POST("/change/pass", controllers.UpdateUserPassword)
 	}
 
-	news := router.Group("/news")
+	products := router.Group("/products")
 	{
-		news.POST("/add", controllers.AddNews)
+		products.POST("/add", controllers.AddProduct)
+		products.GET("/user-product", controllers.GetProductsByUserId)
+		products.GET("/find-filter-product", controllers.GetProductsBetweenPrices)
 	}
-	// add comment router
 
 	return router
 }
