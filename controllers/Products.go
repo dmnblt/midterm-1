@@ -4,12 +4,11 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
-	"time"
 )
 
 type Products struct {
 	ID          int64   `json:"id"`
-	UserId      string  `json:"user_id"`
+	UserId      int64   `json:"user_id"`
 	ProductName string  `json:"product_name"`
 	Rating      int64   `json:"rating"`
 	Price       float64 `json:"price"`
@@ -25,8 +24,8 @@ func AddProduct(c *gin.Context) {
 		return
 	}
 
-	result, err := db.Exec("INSERT INTO products (user_id, product_name, rating, price, available, created_at) VALUES (?, ?, ?, ?, ?)",
-		product.UserId, product.ProductName, product.Rating, product.Price, product.Available, time.Now().UTC().Format(time.RFC3339))
+	result, err := dbConnect().Exec("INSERT INTO products (user_id, product_name, rating, price, available) VALUES (?, ?, ?, ?)",
+		product.UserId, product.ProductName, product.Rating, product.Price, product.Available)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -49,7 +48,7 @@ func GetProductsByUserId(c *gin.Context) {
 		return
 	}
 
-	rows, err := db.Query("SELECT id, user_id, product_name, rating, available, created_at FROM products WHERE user_id = ? ORDER BY rating DESC", searchQuery)
+	rows, err := dbConnect().Query("SELECT id, user_id, product_name, rating, available, created_at FROM products WHERE user_id = ? ORDER BY rating DESC", searchQuery)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -89,7 +88,7 @@ func GetProductsBetweenPrices(c *gin.Context) {
 		return
 	}
 
-	rows, err := db.Query(`
+	rows, err := dbConnect().Query(`
 		SELECT id, user_id, product_name, rating, price, available, created_at
 		FROM products
 		WHERE price BETWEEN ? AND ?

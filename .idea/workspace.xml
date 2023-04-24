@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4bb4e0dd-0445-4be1-820b-ad1e5dee0332" name="Changes" comment="fixed error while updating password">
-      <change afterPath="$PROJECT_DIR$/controllers/Products.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/Comments.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/News.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
-    </list>
+    <list default="true" id="4bb4e0dd-0445-4be1-820b-ad1e5dee0332" name="Changes" comment="mid 2 files added" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -202,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682256810592</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="mid 2 files added">
+      <created>1682351464587</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1682351464587</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,7 +230,8 @@
     <MESSAGE value="added endpoint for changing password" />
     <MESSAGE value="fixed error while updating password" />
     <MESSAGE value="added report 10" />
-    <option name="LAST_COMMIT_MESSAGE" value="added report 10" />
+    <MESSAGE value="mid 2 files added" />
+    <option name="LAST_COMMIT_MESSAGE" value="mid 2 files added" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
