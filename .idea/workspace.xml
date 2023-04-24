@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4bb4e0dd-0445-4be1-820b-ad1e5dee0332" name="Changes" comment="fix error with db">
+    <list default="true" id="4bb4e0dd-0445-4be1-820b-ad1e5dee0332" name="Changes" comment="fixed error while updating password">
+      <change afterPath="$PROJECT_DIR$/controllers/Comments.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_16_2023_10_58_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_16_2023_10_58_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/Products.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Products.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/News.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/News.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,9 +43,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/router/router.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/controllers/User.go" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/go.sum" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/go/pkg/mod/github.com/gin-gonic/gin@v1.5.0/routergroup.go" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/main.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/go.sum" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -72,15 +77,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager" selected="Go Build.go build go-midterm (1)">
-    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
-      <module name="midterm-1" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="go-midterm" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
     <configuration name="go build go-crud" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="GoMid" />
       <working_directory value="$PROJECT_DIR$" />
@@ -108,16 +104,6 @@
       <filePath value="$PROJECT_DIR$/main.go" />
       <method v="2" />
     </configuration>
-    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
-      <module name="midterm-1" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="DIRECTORY" />
-      <package value="go-midterm" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Go Build.go build go-midterm (1)" />
@@ -140,7 +126,7 @@
       <workItem from="1678622514178" duration="19281000" />
       <workItem from="1681125307300" duration="35000" />
       <workItem from="1682064835523" duration="18000" />
-      <workItem from="1682256189262" duration="952000" />
+      <workItem from="1682256189262" duration="570000" />
       <workItem from="1682323951770" duration="4051000" />
     </task>
     <task id="LOCAL-00001" summary="added 5th report">
@@ -192,28 +178,7 @@
       <option name="project" value="LOCAL" />
       <updated>1681664673572</updated>
     </task>
-    <task id="LOCAL-00008" summary="added report 10">
-      <created>1682256810592</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1682256810592</updated>
-    </task>
-    <task id="LOCAL-00009" summary="mid 2 files added">
-      <created>1682351464587</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1682351464587</updated>
-    </task>
-    <task id="LOCAL-00010" summary="fix error with db">
-      <created>1682352251220</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1682352251220</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,7 +194,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added 5th report" />
@@ -239,10 +203,7 @@
     <MESSAGE value="fix json password" />
     <MESSAGE value="added endpoint for changing password" />
     <MESSAGE value="fixed error while updating password" />
-    <MESSAGE value="added report 10" />
-    <MESSAGE value="mid 2 files added" />
-    <MESSAGE value="fix error with db" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix error with db" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed error while updating password" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

@@ -24,6 +24,10 @@ func SetupRouter() *gin.Engine {
 		products.GET("/user-product", controllers.GetProductsByUserId)
 		products.GET("/find-filter-product", controllers.GetProductsBetweenPrices)
 	}
-
+	comments := router.Group("/comments")
+	{
+		comments.POST("/add", controllers.AddComment)
+		comments.GET("/news-comment", controllers.GetCommentsByNewsID)
+	}
 	return router
 }
