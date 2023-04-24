@@ -129,3 +129,7 @@ id := c.Param("id")
 
 	c.JSON(http.StatusOK, gin.H{"data": news})
 }
+
+
+ENDTERM
+MidTerm 2 files in video:  controller/Comments.go, controller/Products.go
