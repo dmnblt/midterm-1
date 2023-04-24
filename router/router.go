@@ -22,6 +22,7 @@ func SetupRouter() *gin.Engine {
 	{
 		news.POST("/add", controllers.AddNews)
 	}
+	// add comment router
 
 	return router
 }

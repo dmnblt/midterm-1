@@ -10,6 +10,7 @@ type News struct {
 	IconURL string `json:"icon_url"`
 	Title   string `json:"title"`
 	Body    string `json:"body"`
+	// add rating attribute
 }
 
 func AddNews(c *gin.Context) {
