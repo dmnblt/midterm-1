@@ -48,7 +48,7 @@ func RegisterUser(c *gin.Context) {
 	var count int
 	err := dbConnect().QueryRow("SELECT COUNT(*) FROM users WHERE email=?", newUser.Email).Scan(&count)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Database error"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Duplicate email"})
 		return
 	}
 	if count > 0 {
@@ -167,7 +167,7 @@ func UpdateUserEmail(c *gin.Context) {
 
 	var user User
 	query := "SELECT * FROM users WHERE id = ?"
-	err := db.QueryRow(query, userID).Scan(&user.ID, &user.Name, &user.Email, &user.Password, &user.CreatedAt)
+	err := db.QueryRow(query, userID).Scan(&user.ID, &user.Name, &user.Email, &user.IsAdmin, &user.Password, &user.CreatedAt)
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{
 			"error": "User not found",

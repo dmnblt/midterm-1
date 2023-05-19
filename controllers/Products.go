@@ -75,6 +75,27 @@ func GetProductsByUserId(c *gin.Context) {
 	c.JSON(http.StatusOK, products)
 }
 
+func UpdateProductOwner(c *gin.Context) {
+	userId := c.Query("userId")
+	id := c.Query("id")
+	if userId == "" || id == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Missing search query parameter"})
+		return
+	}
+
+	query := "UPDATE products SET user_id = ? WHERE id = ?"
+	_, err := db.Exec(query, userId, id)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Failed to update user email",
+		})
+		return
+	}
+	products := make([]Products, 0)
+
+	c.JSON(http.StatusOK, products)
+}
+
 func GetProductsBetweenPrices(c *gin.Context) {
 	from, err := strconv.ParseFloat(c.Query("from"), 64)
 	if err != nil {
