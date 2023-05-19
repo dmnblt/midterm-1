@@ -113,9 +113,9 @@ func LikeComment(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Missing search query parameter"})
 		return
 	}
-	rows, err := dbConnect().Query("SELECT comment_likes FROM Comments WHERE id=?", searchComment)
+	rows, err := dbConnect().Query("SELECT comment_likes FROM comments WHERE id=?", searchComment)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"error1": err.Error()})
 		return
 	}
 
@@ -124,16 +124,16 @@ func LikeComment(c *gin.Context) {
 	for rows.Next() {
 		err := rows.Scan(&comment_likes)
 		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			c.JSON(http.StatusInternalServerError, gin.H{"error2": err.Error()})
 			return
 		}
 
 	}
 	comment_likes += 1
 
-	result, err := dbConnect().Query("UPDATE comments SET comment_likes =", comment_likes)
+	result, err := dbConnect().Query("UPDATE comments SET comment_likes =?", comment_likes)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"error3": err.Error()})
 		return
 	}
 	result.Close()

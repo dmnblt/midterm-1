@@ -28,9 +28,9 @@ func SetupRouter() *gin.Engine {
 	comments := router.Group("/comments")
 	{
 		comments.POST("/add", controllers.AddComment)
-		comments.GET("/news-comment", controllers.GetCommentsByProductID)
-		comments.GET("/comment_desc", controllers.GetCommentsByLikesDesc)
-		comments.GET("/like_comment", controllers.LikeComment)
+		comments.GET("/product-comment", controllers.GetCommentsByProductID)
+		comments.GET("/comment-desc", controllers.GetCommentsByLikesDesc)
+		comments.GET("/like-comment", controllers.LikeComment)
 	}
 	return router
 }
